@@ -1,4 +1,4 @@
-# angular-boilerplate #
+# angular-boilerplate [![Build Status](https://travis-ci.org/algotech/angular-boilerplate.svg?branch=master)](https://travis-ci.org/algotech/angular-boilerplate) #
 
 A kickstarter for [AngularJS](https://angularjs.org) projects.
 
