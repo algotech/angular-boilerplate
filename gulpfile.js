@@ -11,6 +11,7 @@ gulp.paths = {
 
 require('require-dir')('./gulp');
 
+// Default task
 gulp.task('default', ['clean'], function () {
     gulp.start('build');
 });
