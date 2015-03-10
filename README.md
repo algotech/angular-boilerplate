@@ -1,4 +1,4 @@
-# angular-boilerplate [![Build Status](https://travis-ci.org/algotech/angular-boilerplate.svg?branch=master)](https://travis-ci.org/algotech/angular-boilerplate) #
+# angular-boilerplate [![Build Status](https://travis-ci.org/algotech/angular-boilerplate.svg?branch=master)](https://travis-ci.org/algotech/angular-boilerplate)
 
 A kickstarter for [AngularJS](https://angularjs.org) projects.
 
@@ -44,23 +44,26 @@ gulp serve
 
 ## About this project
 
-It is designed to make life easy by providing a basic framework which kickstart AngularJS projects.
-It contains a best-practice directory structure to ensure code reusability and scalability.
+It is designed to make life easy by providing a basic framework which kickstart
+AngularJS projects. It contains a best-practice directory structure to ensure
+code reusability and scalability.
 
 ## Gulp Tasks
 
-This project comes with several tasks aiming to optimize you development process:
-- `gulp` or `gulp build` - to build an optimized version of tou application in `/dist`
-- `gulp serve` - to launch a browser sync server on your source files
-- `gulp serve:dist` - to lunch a server on your optimized application
-- `gulp test` - to launch your unit tests with Karma
-- `gulp test:auto` - to launch your unit tests with Karma in watch mode
-- `gulp protractor` - to launch e2e tests with Protractor
-- `gulp protractor:dist` - to launch e2e tests with Protractor on the dist files
+This project comes with several tasks to optimize you development process:
+- `gulp` or `gulp build` - build an optimized version of your application
+in `/dist`
+- `gulp serve` - launch a browser sync server on your source files
+- `gulp serve:dist` - lunch a server on your optimized application
+- `gulp test` - launch your unit tests with Karma
+- `gulp test:auto` - launch your unit tests with Karma in watch mode
+- `gulp protractor` - launch e2e tests with Protractor
+- `gulp protractor:dist` - launch e2e tests with Protractor on the dist files
 
 Features included in the gulpfile:
 - `useref` - allow configuration of your files in comments of your HTML file
-- `ng-annotate` - convert simple injection to complete syntax to be minification proof
+- `ng-annotate` - convert simple injection to complete syntax to be
+minification proof
 - `uglify` - optimize all your JavaScript
 - `csso` - optimize all your CSS
 - `rev` - add a hash in the file names to prevent browser cache problems
@@ -69,15 +72,18 @@ Features included in the gulpfile:
 - `imagemin` - all your images will be optimized at build
 - `karma` - out of the box unit test configuration with karma
 - `protractor` - out of the box e2e test configuration with protractor
-- `browser sync` - full-featured development web server with livereload and devices sync
-- `angular-templatecache` - all HTML partials will be converted to JS to be bundled in the application
+- `browser sync` - full-featured development web server with livereload and
+devices sync
+- `angular-templatecache` - all HTML partials will be converted to JS to be
+bundled in the application
 
 ## Style Guide
 
 ### Directory structure
 
-- Since a large AngularJS application has many components it is best to structure it in a directory hierarchy,
-creating high-level divisions by functionality and lower-level divisions by component types:
+- Since a large AngularJS application has many components it is best to
+structure it in a directory hierarchy, creating high-level divisions by
+functionality and lower-level divisions by component types:
 
 ```
 .
@@ -133,9 +139,9 @@ src/app
      └── services
 ```
 
-- When creating directives it may be useful to put all the files associated with the given directive
-files (templates, CSS/SASS files, JavaScript) in a single folder. Be consistent and use it everywhere
-along your project.
+- When creating directives it may be useful to put all the files associated
+with the given directive files (templates, CSS/SASS files, JavaScript) in
+a single folder. Be consistent and use it everywhere along your project.
 
 ```
 src/app
@@ -156,7 +162,7 @@ src/app
 
 ```
 <form class="frm" ng-submit="login.authenticate()">
-  <input class="ipt" type="text" placeholder="name" require ng-model="user.name">
+  <input class="ipt" type="text" placeholder="name" require ng-model="user">
 </form>
 ```
 
@@ -165,18 +171,20 @@ src/app
 
 ### Optimize the digest cycle
 
-- Watch only the most vital variables (for example: when using real-time communication,
-don't cause a `$digest` loop in each received message).
+- Watch only the most vital variables (for example: when using real-time
+communication, don't cause a `$digest` loop in each received message).
 
 - For content that is initialized only once and then never changed,
 use single-time watchers like [`bindonce`](https://github.com/Pasvaz/bindonce).
 
-- Make computations in `$watch`  as simple as possible. Making heavy and slow computations
-in a single `$watch` will slow down the whole application
-(the `$digest` loop is done in a single thread because of the single-threaded nature of JavaScript).
+- Make computations in `$watch`  as simple as possible. Making heavy and slow
+computations in a single `$watch` will slow down the whole application
+(the `$digest` loop is done in a single thread because of the single-threaded
+nature of JavaScript).
 
-- Set third parameter in `$timeout` function to false to skip the `$digest` loop
-when no watched variables are impacted by the invocation of the `$timeout` callback function.
+- Set third parameter in `$timeout` function to false to skip the `$digest`
+loop when no watched variables are impacted by the invocation of the `$timeout`
+callback function.
 
 ### General guides
 
@@ -187,7 +195,7 @@ when no watched variables are impacted by the invocation of the `$timeout` callb
   - `$document` instead of `document`
   - `$http` instead of `$.ajax`
 
-This will make your testing easier and in some cases prevent unexpected behaviour
+This will make your testing easier and prevent unexpected behaviour.
 
 - Use promises (`$q`) instead of callbacks. It will make your code to look more
 elegant and clean, and save you from callback hell.
@@ -197,8 +205,9 @@ elegant and clean, and save you from callback hell.
 are being used in the templates.
 - Do not use `$` prefix for the names of variables, properties and methods.
 This prefix is reserved for AngularJS usage.
-- When resolving dependencies through the DI mechanism of AngularJS, sort the dependencies
-by their type - the built-in AngularJS dependencies should be first, followed by your custom ones.
+- When resolving dependencies through the DI mechanism of AngularJS, sort the
+dependencies by their type - the built-in AngularJS dependencies should be
+first, followed by your custom ones.
 
 ### Modules
 
@@ -209,15 +218,17 @@ The recommended way for structuring the modules is by functionality.
 
 ### Controllers
 
-- Do not manipulate DOM in your controllers. This will make your controllers harder for testing
-and will violate the Separation of Concerns principle. Use directives instead.
+- Do not manipulate DOM in your controllers. This will make your controllers
+harder for testing and will violate the Separation of Concerns principle.
+Use directives instead.
 
-- The naming of the controller is done using the controller's functionality (for example shopping cart,
-homepage, admin panel) and the substring `Ctrl` in the end.
-The controllers are named UpperCamelCase (`HomePageCtrl`, `ShoppingCartCtrl`, `AdminPanelCtrl`, etc.).
+- The naming of the controller is done using the controller's functionality
+(for example shopping cart, homepage, admin panel) and the substring `Ctrl` in
+the end. The controllers are named UpperCamelCase
+(`HomePageCtrl`, `ShoppingCartCtrl`, `AdminPanelCtrl`, etc.).
 
-- The controllers should not be defined as globals (even though AngularJS allows this,
-it is a bad practice to pollute the global namespace).
+- The controllers should not be defined as globals (even though AngularJS
+allows this, it is a bad practice to pollute the global namespace).
 
 - Use array syntax for controller definitions:
 
@@ -229,7 +240,8 @@ module.controller('MyCtrl', ['dependency1', function (dependency1) {
 
 Using this type of definition avoids problems with minification.
 
-- Make the controllers as lean as possible. Abstract commonly used functions into a service.
+- Make the controllers as lean as possible. Abstract commonly used functions
+into a service.
 
 ### Directives
 
