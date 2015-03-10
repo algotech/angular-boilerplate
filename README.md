@@ -163,7 +163,7 @@ in a single `$watch` will slow down the whole application
 - Set third parameter in `$timeout` function to false to skip the `$digest` loop
 when no watched variables are impacted by the invocation of the `$timeout` callback function.
 
-#### General ####
+#### General guides ####
 
 - Use:
   - `$timeout` instead of `setTimeout`
@@ -184,3 +184,100 @@ are being used in the templates.
 This prefix is reserved for AngularJS usage.
 - When resolving dependencies through the DI mechanism of AngularJS, sort the dependencies
 by their type - the built-in AngularJS dependencies should be first, followed by your custom ones.
+
+#### Modules ####
+
+Modules should be named with lowerCamelCase. For indicating that module `b`
+is submodule of module `a` you can nest them by using namespacing like: `a.b`.
+
+The recommended way for structuring the modules is by functionality.
+
+#### Controllers ####
+
+- Do not manipulate DOM in your controllers. This will make your controllers harder for testing
+and will violate the Separation of Concerns principle. Use directives instead.
+
+- The naming of the controller is done using the controller's functionality (for example shopping cart,
+homepage, admin panel) and the substring `Ctrl` in the end.
+The controllers are named UpperCamelCase (`HomePageCtrl`, `ShoppingCartCtrl`, `AdminPanelCtrl`, etc.).
+
+- The controllers should not be defined as globals (even though AngularJS allows this,
+it is a bad practice to pollute the global namespace).
+
+- Use array syntax for controller definitions:
+
+```js
+module.controller('MyCtrl', ['dependency1', function (dependency1) {
+  //...body
+}]);
+```
+
+Using this type of definition avoids problems with minification.
+
+- Make the controllers as lean as possible. Abstract commonly used functions into a service.
+
+#### Directives ####
+
+- Name your directives with lowerCamelCase.
+- Use custom prefixes for your directives to prevent name collisions
+with third-party libraries.
+- Do not use `ng` or `ui` prefixes since they are reserved for AngularJS
+and AngularJS UI usage.
+- DOM manipulations must be done only through directives.
+- Create an isolated scope when you develop reusable components.
+- Use directives as attributes or elements instead of comments or classes,
+this will make your code more readable.
+- Use `$scope.$on('$destroy', fn)` for cleaning up. This is especially
+useful when you're wrapping third-party plugins as directives.
+- Do not forget to use `$sce` when you should deal with untrusted content.
+
+#### Filters ####
+
+- Name your filters with lowerCamelCase.
+- Make your filters as light as possible. They are called often during
+the `$digest` loop so creating a slow filter will slow down your app.
+- Do a single thing in your filters, keep them coherent.
+More complex manipulations can be achieved by piping existing filters.
+
+#### Services ####
+
+This section includes information about the service component in AngularJS.
+It is not dependent of the way of definition
+(i.e. as provider, `.factory`, `.service`), except if explicitly mentioned.
+
+- Use camelCase to name your services.
+  - UpperCamelCase for naming your services, used as constructor functions
+(see that User is just a factory used to instantiate multiple objects):
+
+    ```js
+    module.factory('User', function () {
+      return function User(name, age) {
+        this.name = name;
+        this.age = age;
+      };
+    });
+
+    module.controller('MainCtrl', function ($scope, User) {
+      $scope.user = new User('foo', 42);
+    });
+    ```
+
+  - lowerCamelCase for all other services.
+
+- Encapsulate all the business logic in services.
+- For session-level cache you can use `$cacheFactory`.
+This should be used to cache results from requests or heavy computations.
+- If given service requires configuration define the service as provider and
+configure it in the `config` callback.
+
+#### Templates ####
+
+- Use `ng-bind` or `ng-cloak` instead of `{{ }}` to prevent flashing content.
+- Avoid writing complex expressions in the templates.
+- When you need to set the `src` of an image dynamically use `ng-src`
+instead of `src` with `{{ }}` template.
+- When you need to set the `href` of an anchor tag dynamically use `ng-href`
+instead of `href` with `{{ }}` template.
+- Instead of using scope variable as string and using it with `style`
+attribute with `{{ }}`, use the directive `ng-style` with object-like
+parameters and scope variables as values:
