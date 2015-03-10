@@ -27,6 +27,11 @@ bower install
 gulp serve
 ```
 
+### About this project ###
+
+It is designed to make life easy by providing a basic framework which kickstart AngularJS projects.
+It contains a best-practice directory structure to ensure code reusability and scalability.
+
 ### Gulp Tasks ###
 
 This project comes with several tasks aiming to optimize you development process:
