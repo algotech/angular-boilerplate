@@ -2,7 +2,22 @@
 
 A kickstarter for [AngularJS](https://angularjs.org) projects.
 
-### Quick Start ###
+- [Quick Start](#quick-start)
+- [About this project](#about-this-project)
+- [Gulp Tasks](#gulp-tasks)
+- [Style Guide](#style-guide)
+  - [Directory structure](#directory-structure)
+  - [Markup](#markup)
+  - [Optimize the digest cycle](#optimize-the-digest-cycle)
+  - [General guides](#general-guides)
+  - [Modules](#modules)
+  - [Controllers](#controllers)
+  - [Directives](#directives)
+  - [Filters](#filters)
+  - [Services](#services)
+  - [Templates](#templates)
+
+## Quick Start
 
 - First of all, make sure you have [Node.JS](https://nodejs.org) installed
 before continuing.
@@ -27,12 +42,12 @@ bower install
 gulp serve
 ```
 
-### About this project ###
+## About this project
 
 It is designed to make life easy by providing a basic framework which kickstart AngularJS projects.
 It contains a best-practice directory structure to ensure code reusability and scalability.
 
-### Gulp Tasks ###
+## Gulp Tasks
 
 This project comes with several tasks aiming to optimize you development process:
 - `gulp` or `gulp build` - to build an optimized version of tou application in `/dist`
@@ -57,9 +72,9 @@ Features included in the gulpfile:
 - `browser sync` - full-featured development web server with livereload and devices sync
 - `angular-templatecache` - all HTML partials will be converted to JS to be bundled in the application
 
-### Style Guide ###
+## Style Guide
 
-#### Directory structure ####
+### Directory structure
 
 - Since a large AngularJS application has many components it is best to structure it in a directory hierarchy,
 creating high-level divisions by functionality and lower-level divisions by component types:
@@ -135,7 +150,7 @@ src/app
         └── product.sass
 ```
 
-#### Markup ####
+### Markup
 
 - JavaScript files should be loaded right before the `</body>`
 
@@ -148,7 +163,7 @@ src/app
 - Other HTML atributes should follow the Code Guide's
 [recommendation](http://mdo.github.io/code-guide/#html-attribute-order)
 
-#### Optimize the digest cycle ####
+### Optimize the digest cycle
 
 - Watch only the most vital variables (for example: when using real-time communication,
 don't cause a `$digest` loop in each received message).
@@ -163,7 +178,7 @@ in a single `$watch` will slow down the whole application
 - Set third parameter in `$timeout` function to false to skip the `$digest` loop
 when no watched variables are impacted by the invocation of the `$timeout` callback function.
 
-#### General guides ####
+### General guides
 
 - Use:
   - `$timeout` instead of `setTimeout`
@@ -185,14 +200,14 @@ This prefix is reserved for AngularJS usage.
 - When resolving dependencies through the DI mechanism of AngularJS, sort the dependencies
 by their type - the built-in AngularJS dependencies should be first, followed by your custom ones.
 
-#### Modules ####
+### Modules
 
 Modules should be named with lowerCamelCase. For indicating that module `b`
 is submodule of module `a` you can nest them by using namespacing like: `a.b`.
 
 The recommended way for structuring the modules is by functionality.
 
-#### Controllers ####
+### Controllers
 
 - Do not manipulate DOM in your controllers. This will make your controllers harder for testing
 and will violate the Separation of Concerns principle. Use directives instead.
@@ -216,7 +231,7 @@ Using this type of definition avoids problems with minification.
 
 - Make the controllers as lean as possible. Abstract commonly used functions into a service.
 
-#### Directives ####
+### Directives
 
 - Name your directives with lowerCamelCase.
 - Use custom prefixes for your directives to prevent name collisions
@@ -231,7 +246,7 @@ this will make your code more readable.
 useful when you're wrapping third-party plugins as directives.
 - Do not forget to use `$sce` when you should deal with untrusted content.
 
-#### Filters ####
+### Filters
 
 - Name your filters with lowerCamelCase.
 - Make your filters as light as possible. They are called often during
@@ -239,7 +254,7 @@ the `$digest` loop so creating a slow filter will slow down your app.
 - Do a single thing in your filters, keep them coherent.
 More complex manipulations can be achieved by piping existing filters.
 
-#### Services ####
+### Services
 
 This section includes information about the service component in AngularJS.
 It is not dependent of the way of definition
@@ -270,7 +285,7 @@ This should be used to cache results from requests or heavy computations.
 - If given service requires configuration define the service as provider and
 configure it in the `config` callback.
 
-#### Templates ####
+### Templates
 
 - Use `ng-bind` or `ng-cloak` instead of `{{ }}` to prevent flashing content.
 - Avoid writing complex expressions in the templates.
