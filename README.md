@@ -42,6 +42,10 @@ bower install
 gulp serve
 ```
 
+- And do not forget about [.editorconfig](.editorconfig) file.
+You can read how to configure your favorite IDE to use it on
+[editorconfig.org](http://editorconfig.org).
+
 ## About this project
 
 It is designed to make life easy by providing a basic framework which kickstart
