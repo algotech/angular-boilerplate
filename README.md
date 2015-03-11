@@ -158,7 +158,9 @@ src/app
 
 ### Markup
 
-- JavaScript files should be loaded right before the `</body>`
+- JavaScript files should be loaded right before the `</body>`.
+- Keep things simple and put AngularJS specific directives later.
+This way is easy to look to the code and understand:
 
 ```
 <form class="frm" ng-submit="login.authenticate()">
