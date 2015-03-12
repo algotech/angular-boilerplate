@@ -63,6 +63,8 @@ in `/dist`
 - `gulp test:auto` - launch your unit tests with Karma in watch mode
 - `gulp protractor` - launch e2e tests with Protractor
 - `gulp protractor:dist` - launch e2e tests with Protractor on the dist files
+- `gulp ci` - used for continuous integration
+(coding standards, unit tests, e2e tests)
 
 Features included in the gulpfile:
 - `useref` - allow configuration of your files in comments of your HTML file
@@ -73,6 +75,7 @@ minification proof
 - `rev` - add a hash in the file names to prevent browser cache problems
 - `watch` - watch your source files and recompile them automatically
 - `jshint` - a static code analysis tool for javascript
+- `jscs` - a code style linter for programmatically enforcing style guide
 - `imagemin` - all your images will be optimized at build
 - `karma` - out of the box unit test configuration with karma
 - `protractor` - out of the box e2e test configuration with protractor
