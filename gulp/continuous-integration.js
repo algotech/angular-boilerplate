@@ -4,5 +4,5 @@ var gulp   = require('gulp');
 
 gulp.task(
   'ci',
-  ['coding-standards', 'test', 'protractor', 'protractor:dist']
+  ['coding-standards', 'test', 'protractor']
 );
