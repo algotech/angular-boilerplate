@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('test', ['ngTouch', 'restangular', 'ui.router', 'ui.bootstrap'])
-  .config(function ($stateProvider, $urlRouterProvider) {
+  .config(function($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('home', {
         url: '/',

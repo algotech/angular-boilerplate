@@ -14,4 +14,4 @@ before_script:
     - npm install
     - bower install
 
-script: gulp && gulp test && gulp protractor && gulp protractor:dist
+script: gulp && gulp ci
