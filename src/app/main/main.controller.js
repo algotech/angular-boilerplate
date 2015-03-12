@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('test')
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', function($scope) {
     $scope.awesomeThings = [
       {
         'title': 'AngularJS',
@@ -36,25 +36,30 @@ angular.module('test')
       {
         'title': 'Protractor',
         'url': 'https://github.com/angular/protractor',
-        'description': 'End to end test framework for AngularJS applications built on top of WebDriverJS.',
+        'description': 'End to end test framework for AngularJS ' +
+                       'applications built on top of WebDriverJS.',
         'logo': 'protractor.png'
       },
       {
         'title': 'Bootstrap',
         'url': 'http://getbootstrap.com/',
-        'description': 'Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile first projects on the web.',
+        'description': 'Bootstrap is the most popular HTML, CSS, and JS ' +
+                       'framework for developing responsive, mobile first ' +
+                       'projects on the web.',
         'logo': 'bootstrap.png'
       },
       {
         'title': 'Angular UI Bootstrap',
         'url': 'http://angular-ui.github.io/bootstrap/',
-        'description': 'Bootstrap components written in pure AngularJS by the AngularUI Team.',
+        'description': 'Bootstrap components written in pure AngularJS by ' +
+                       'the AngularUI Team.',
         'logo': 'ui-bootstrap.png'
       },
       {
         'title': 'Sass (Node)',
         'url': 'https://github.com/sass/node-sass',
-        'description': 'Node.js binding to libsass, the C version of the popular stylesheet preprocessor, Sass.',
+        'description': 'Node.js binding to libsass, the C version of the ' +
+                       'popular stylesheet preprocessor, Sass.',
         'logo': 'node-sass.png'
       }
     ];
