@@ -1,0 +1,9 @@
+{
+  "preset": "google",
+
+  "maximumLineLength": {
+      "value": 120,
+      "allowComments": true,
+      "allowRegex": true
+    }
+}

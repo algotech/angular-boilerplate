@@ -14,3 +14,14 @@ gulp.task('lint', function() {
     .pipe(jshint.reporter(stylish))
     .pipe(jshint.reporter('fail'));
 });
+
+var jscs = require('gulp-jscs');
+
+gulp.task('code-style', function() {
+  return gulp.src([
+    paths.src + '/**/*.js'
+  ])
+    .pipe(jscs());
+});
+
+gulp.task('coding-standards', ['lint', 'code-style']);
