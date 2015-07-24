@@ -1,6 +1,6 @@
 'use strict';
 
-var gulp = require('gulp');
+var gulp = require('gulp-param')(require('gulp'), process.argv);
 
 var paths = gulp.paths;
 
@@ -28,7 +28,7 @@ function browserSyncInit(baseDir, files, browser) {
   });
 }
 
-gulp.task('serve', ['watch'], function () {
+gulp.task('serve', ['watch'], function (browser) {
   browserSyncInit([
     paths.tmp + '/serve',
     paths.src
@@ -39,7 +39,8 @@ gulp.task('serve', ['watch'], function () {
     paths.tmp + '/serve/*.html',
     paths.tmp + '/serve/{app,components}/**/*.html',
     paths.src + '/{app,components}/**/*.html'
-  ]);
+  ],
+  browser);
 });
 
 gulp.task('serve:dist', ['build'], function () {
