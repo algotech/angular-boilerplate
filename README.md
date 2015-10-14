@@ -59,6 +59,7 @@ This project comes with several tasks to optimize you development process:
 in `/dist`
 - `gulp serve` - launch a browser sync server on your source files
 - `gulp serve:dist` - lunch a server on your optimized application
+- `gulp serve --browser` - launch a user defined browser sync server on your source files
 - `gulp test` - launch your unit tests with Karma
 - `gulp test:auto` - launch your unit tests with Karma in watch mode
 - `gulp protractor` - launch e2e tests with Protractor
