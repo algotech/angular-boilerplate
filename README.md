@@ -104,56 +104,56 @@ functionality and lower-level divisions by component types:
 ```
 .
 ├── src/app
-│   ├── app.js
+│   ├── index.module.js
 │   ├── common
 │   │   ├── controllers
 │   │   ├── directives
 │   │   ├── filters
 │   │   └── services
 │   ├── home
-│   │   ├── controllers
-│   │   │   ├── FirstCtrl.js
-│   │   │   └── SecondCtrl.js
+│   │   ├── home.module.js
+│   │   ├── home.controller.js
+│   │   ├── home.template.html
 │   │   ├── directives
-│   │   │   └── directive1.js
+│   │   │   ├── directive-name-1
+│   │   │   │   ├── directive-name-1.directive.js
+│   │   │   │   ├── directive-name-1.controller.js
+│   │   │   │   └── directive-name-1.template.html
+│   │   │   └── directive-name-2
+│   │   │       └── ...
 │   │   ├── filters
-│   │   │   ├── filter1.js
-│   │   │   └── filter2.js
+│   │   │   ├── filter-name-1.js
+│   │   │   └── filter-name-2.js
 │   │   └── services
-│   │       ├── service1.js
-│   │       └── service2.js
+│   │       ├── service-name-1.js
+│   │       └── service-name-2.js
 │   └── about
-│       ├── controllers
-│       │   └── ThirdCtrl.js
+│       ├── about.module.js
+│       ├── about.controller.js
+│       ├── about.template.html
 │       ├── directives
-│       │   ├── directive2.js
-│       │   └── directive3.js
+│       │   ├── directive-name-3
+│       │   │   ├── directive-name-3.directive.js
+│       │   │   ├── directive-name-3.controller.js
+│       │   │   └── directive-name-3.template.html
+│       │   └── directive-name-4
 │       ├── filters
-│       │   └── filter3.js
+│       │   └── filter-name-3.js
 │       └── services
-│           └── service3.js
+│           └── service-name-3.js
 ├── src/assets
-├── src/partials
-└── e2e
-    ├── home
-    │   ├── FirstCtrl.spec.js
-    │   ├── SecondCtrl.spec.js
-    ├── about
-    │   └── ThirdCtrl.spec.js
-    └── about
+└── tests
+    ├── e2e
+    │   ├── home.po.js
+    │   ├── home.spec.js
+    │   ├── about.po.js
+    │   └── about.spec.js
+    └── unit
+         ├── home.controller.spec.js
+         └── about.controller.spec.js
 ```
 
-- In case the directory name contains multiple words, use lisp-case syntax:
-
-```
-src/app
- ├── app.js
- └── my-complex-module
-     ├── controllers
-     ├── directives
-     ├── filters
-     └── services
-```
+- In case the directory name contains multiple words, use lisp-case syntax.
 
 - When creating directives it may be useful to put all the files associated
 with the given directive files (templates, CSS/SASS files, JavaScript) in
@@ -161,15 +161,16 @@ a single folder. Be consistent and use it everywhere along your project.
 
 ```
 src/app
-└── directives
-    ├── directive-category
-    │   ├── category.html
-    │   ├── category.js
-    │   └── category.sass
-    └── directive-product
-        ├── product.html
-        ├── product.js
-        └── product.sass
+└── page 
+    └── directives
+        ├── directive-category
+        │   ├── category.html
+        │   ├── category.js
+        │   └── category.sass
+        └── directive-product
+            ├── product.html
+            ├── product.js
+            └── product.sass
 ```
 
 ### Markup
@@ -184,7 +185,7 @@ This way is easy to look to the code and understand:
 </form>
 ```
 
-- Other HTML atributes should follow the Code Guide's
+- Other HTML attributes should follow the Code Guide's
 [recommendation](http://mdo.github.io/code-guide/#html-attribute-order)
 
 ### Optimize the digest cycle
