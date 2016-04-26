@@ -85,13 +85,10 @@ devices sync
 - `angular-templatecache` - all HTML partials will be converted to JS to be
 bundled in the application
 
-`Protractor` is using `Google Chrome` to execute tests. You  should make sure you 
-have `Chrome` installed or switch to another browser in  `protractor.conf.js`. 
-Note that a browser change in the config requires  additional dependencies in 
-`package.json` if the browser driver is not installed.
-
-`Karma` is using `PhantomJS` for testing which is automatically installed by
-`npm install`.
+Both `protractor` and `karma` are using `Google Chrome` to execute tests. You 
+should make sure you have `Chrome` installed or change `karma.conf.js` and/or 
+`protractor.conf.js`. Note that a browser change in the config requires 
+additional changes in `package.json` if the browser driver is not installed.
 
 ## Replace favicon
 
