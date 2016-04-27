@@ -46,7 +46,7 @@ gulp.task('html', ['inject', 'partials'], function () {
     .pipe($.uglify({preserveComments: $.uglifySaveLicense}))
     .pipe(jsFilter.restore())
     .pipe(cssFilter)
-    .pipe($.replace('../bootstrap-sass/assets/fonts/bootstrap', 'fonts'))
+    .pipe($.replace('../bower_components/bootstrap-sass/assets/fonts/bootstrap', 'fonts'))
     .pipe($.csso())
     .pipe(cssFilter.restore())
     .pipe(assets.restore())
@@ -70,14 +70,14 @@ gulp.task('images', function () {
 
 gulp.task('fonts', function () {
   return gulp.src($.mainBowerFiles())
-    .pipe($.filter('**/*.{eot,svg,ttf,woff}'))
+    .pipe($.filter('**/*.{eot,svg,ttf,woff,woff2}'))
     .pipe($.flatten())
     .pipe(gulp.dest(paths.dist + '/fonts/'));
 });
 
 gulp.task('misc', function () {
-  return gulp.src(paths.src + '/**/*.ico')
-    .pipe(gulp.dest(paths.dist + '/'));
+  return gulp.src(paths.src + '/favicons/*')
+    .pipe(gulp.dest(paths.dist + '/favicons/'));
 });
 
 gulp.task('clean', function (done) {
