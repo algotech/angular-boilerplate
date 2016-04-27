@@ -93,6 +93,14 @@ Note that a browser change in the config requires  additional dependencies in
 `Karma` is using `PhantomJS` for testing which is automatically installed by
 `npm install`.
 
+## Replace favicon
+
+The favicons for this boilerplate were generated using 
+[favicon-generator](http://www.favicon-generator.org). In order to replace the
+current favicon all you have to do is access the mentioned website, generate 
+your own favicon images set and replace it with the current one in the 
+`src/favicon` folder.
+
 ## Style Guide
 
 ### Directory structure
