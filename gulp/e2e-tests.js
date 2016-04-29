@@ -18,7 +18,6 @@ function runProtractor (done) {
       // Make sure failed tests cause gulp to exit non-zero
       throw err;
     })
-    .on('error', function(e) { throw e; })
     .on('end', function() {
       done();
       browserSync.exit();
